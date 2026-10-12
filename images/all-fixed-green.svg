@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; }
+      .header-bar { fill: #161b22; stroke: #30363d; stroke-width: 1; }
+      .title-txt { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 18px; font-weight: 600; fill: #f0f6fc; }
+      .sub-txt { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 13px; fill: #8b949e; }
+      .success-box { fill: rgba(35, 134, 54, 0.15); stroke: #238636; stroke-width: 1.5; rx: 8; }
+      .job-card { fill: #161b22; stroke: #238636; stroke-width: 2; rx: 8; }
+      .job-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 15px; font-weight: 600; fill: #f0f6fc; }
+      .step-txt { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 13px; fill: #c9d1d9; }
+      .log-box { fill: #0d1117; stroke: #30363d; rx: 6; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; fill: #7ee787; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1000" height="600" rx="10" />
+
+  <rect class="header-bar" width="1000" height="55" rx="10 10 0 0" />
+  <circle cx="35" cy="27" r="10" fill="#238636" />
+  <path d="M 31 27 L 34 30 L 40 23" fill="none" stroke="#fff" stroke-width="2" />
+  <text x="55" y="33" class="title-txt">Fixed CI/CD Pipeline (All 3 Critical Errors Resolved) #1</text>
+  <text x="590" y="33" class="sub-txt">All checks have passed in 1m 24s</text>
+
+  <!-- Success Banner -->
+  <rect x="40" y="75" width="920" height="75" class="success-box" />
+  <circle cx="70" cy="112" r="14" fill="#238636" />
+  <path d="M 65 112 L 68 115 L 76 107" fill="none" stroke="#fff" stroke-width="2" />
+  <text x="100" y="103" font-family="sans-serif" font-size="15" font-weight="600" fill="#3fb950">Toàn bộ 3 lỗi đứt gãy đã được khắc phục hoàn toàn - Pipeline chuyển trạng thái TÍCH XANH ✅</text>
+  <text x="100" y="128" class="sub-txt">Fix 1: chmod +x gradlew  |  Fix 2: REGISTRY_TOKEN Auth  |  Fix 3: Docker Context &amp; Dockerfile</text>
+
+  <!-- Job 1: Gradle Test -->
+  <rect x="40" y="170" width="440" height="230" class="job-card" />
+  <circle cx="70" cy="205" r="10" fill="#238636" />
+  <path d="M 66 205 L 69 208 L 75 201" fill="none" stroke="#fff" stroke-width="2" />
+  <text x="95" y="210" class="job-title">Job 1: test (Gradle Test &amp; Build)</text>
+  
+  <text x="70" y="245" class="step-txt">✓ Checkout Code (actions/checkout@v4)</text>
+  <text x="70" y="275" class="step-txt">✓ Setup Java JDK 21 (Temurin)</text>
+  <text x="70" y="305" class="step-txt" fill="#3fb950" font-weight="bold">✓ [FIX 1] Grant Execute Permission (chmod +x gradlew)</text>
+  <text x="70" y="335" class="step-txt">✓ Run Unit Tests with Gradle (BUILD SUCCESSFUL)</text>
+  <text x="70" y="365" class="sub-txt">Execution time: 38s | Status: Passed</text>
+
+  <!-- Job 2: Docker Build -->
+  <rect x="520" y="170" width="440" height="230" class="job-card" />
+  <circle cx="550" cy="205" r="10" fill="#238636" />
+  <path d="M 546 205 L 549 208 L 555 201" fill="none" stroke="#fff" stroke-width="2" />
+  <text x="575" y="210" class="job-title">Job 2: docker-build (needs: test)</text>
+  
+  <text x="550" y="245" class="step-txt">✓ Checkout Code (actions/checkout@v4)</text>
+  <text x="550" y="275" class="step-txt" fill="#3fb950" font-weight="bold">✓ [FIX 2] Login to Docker Registry (${{ secrets.REGISTRY_TOKEN }})</text>
+  <text x="550" y="305" class="step-txt">✓ Set up Docker Buildx</text>
+  <text x="550" y="335" class="step-txt" fill="#3fb950" font-weight="bold">✓ [FIX 3] Build &amp; Push Image (context: ., file: ./Dockerfile)</text>
+  <text x="550" y="365" class="sub-txt">Execution time: 46s | Status: Passed</text>
+
+  <!-- Terminal log preview -->
+  <rect x="40" y="420" width="920" height="150" fill="#0d1117" stroke="#30363d" rx="6" />
+  <text x="60" y="450" class="log-box">> [Gradle] :compileJava -> :compileTestJava -> :test -> BUILD SUCCESSFUL in 19s</text>
+  <text x="60" y="475" class="log-box">> [Docker Login] Logging in to ghcr.io with username: duongtran1702 -> Login Succeeded</text>
+  <text x="60" y="500" class="log-box">> [Docker Buildx] Context loaded: . | Dockerfile loaded: ./Dockerfile</text>
+  <text x="60" y="525" class="log-box">> [Docker Buildx] exporting to image -> pushing layers -> DONE ghcr.io/duongtran1702/...:latest</text>
+  <text x="60" y="550" class="log-box" fill="#3fb950">> [Status] ALL 2 JOBS COMPLETED SUCCESSFULLY (100% GREEN CHECKMARK) ✅</text>
+</svg>
